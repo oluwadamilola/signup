@@ -1,0 +1,15 @@
+#input-wrapper * {
+    position: absolute;
+  }
+  
+  #input-wrapper label {
+    z-index: 99;
+    line-height: 25px;
+    padding: 2px;
+    margin-left: 5px;
+  }
+  
+  #input-wrapper input {
+    height: 25px;
+    text-indent: 35px;
+  }
