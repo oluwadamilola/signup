@@ -4,12 +4,11 @@ $username = "root";
 $password = "";
 $dbname = "signup";
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+$db_con = new mysqli($servername, $username, $password, $dbname);
 
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
+if ($db_con->connect_error) {
+    printf("connect failed: %s\n, 
+    ", $db_con->connect_error);
+    exit();
 }
-echo "Connected successfully";
 ?> 

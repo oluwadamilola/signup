@@ -33,20 +33,21 @@
 				</div>
 				<div class="form-wrapper">
 					<label for="number">Phone Number</label>
-					<input id="phone" name="phone" type="tel" class="form-control" width="100%" name="phonenumber" placeholder="80123456789" id="phone" required>
+					<input id="phone"  class="form-control" width="100%" name="phonenumber" placeholder="80123456789" id="phone" required>
 				
 				</div>
 				<div class="form-wrapper">
 					<label for="">Date of Birth</label>
-					<input type="date" class="form-control"  id="dob" name="dob" required>	
+					<input type="date" class="form-control"  id="dob" name="dateofbirth" required>	
 				</div>
 				<div class="form-wrapper">
 					<label for="">Gender</label>
 					<select class="form-control" id="gender"  name="gender"  required>
-						<option value="">select</option>
-						<option>Female</option>
-						<option>Male</option>
+						<option value="" >select</option>
+						<option value="Female" name="gender">Female</option>
+						<option value="Male" name="gender">Male</option>
 					</select>
+					
 				
 				</div>
 				<button class="button" name="submit">Continue</button>

@@ -1,64 +1,41 @@
-<?PHP
-$firstname ="";
-$lastname ="";
-$gender = "";
-$dob = "";
-$phonenumber ="";
-$errorMessage = "";
+<?php
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-	require 'dbconfig.php';
-
+    include 'dbconfig.php';
     $firstname = $_POST['firstname'];
 	$lastname = $_POST['lastname'];
-    $phonenumber =  $_POST['phonenumber'];
+    $phonenumber =  mysqli_real_escape_string($db_con, $_POST['phonenumber']);
     $gender = $_POST['gender'];
-    $dob = $_POST['dob'];
-	$database = "signup";
+    $dateofbirth = $_POST['dateofbirth'];
+    $errors = "";
+    // $phonenumber = $_POST['phonenumber'];
+    // $date = $_POST['date'];
 
+    $user_check_query = "SELECT * FROM user WHERE  phonenumber='$phonenumber' LIMIT 1";
+    $result = mysqli_query($db_con, $user_check_query);
+ $row =mysqli_fetch_array($result, MYSQLI_ASSOC);
+
+$count = mysqli_num_rows($result);
+  if ($count ==1) {
+      $errors ="user already exist";
+      echo $errors;
+  }
+ else {
+    $sql = $db_con->prepare("INSERT INTO user ( firstname, lastname, phonenumber, dateofbirth, gender)VALUES(?,?,?,?,?)");
+    $sql->bind_param("sssss", $firstname, $lastname, $phonenumber, $dateofbirth, $gender);
     
-    $phonenumber = mysqli_real_escape_string($conn, $_POST['phonenumber']);
+    if ($sql->execute()) {
+        header("Location: final.php");
+            exit;
+    }
+    else{
+        echo "Error, check values " . $sql->error;
 
-    $sql = "SELECT id FROM user WHERE  phonenumber = '$phonenumber'";
-    $result = mysqli_query($db_con, $sql);
-    $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-		if ($row->num_rows > 0) {
-			$errorMessage = "Username already taken";
-		}
-		else {
-			$SQL = $conn->prepare("INSERT INTO user (firstname,lastname, phonenumber, gender,dob) VALUES (?, ?,?,?,?)");
-			$SQL->bind_param('sssss', $firstname,$lastname, $phonenumber, $gender, $dob);
-			$SQL->execute();
-
-			header ("Location: form.html");
-		}
-       
-	}
+    }
+    
+    $db_con->close();
+ }
+    
+}
 
 ?>
-
-	<html>
-	<head>
-	<title>Basic Signup Script</title>
-
-
-	</head>
-	<body>
-
-
-<FORM NAME ="form1" METHOD ="POST" ACTION ="signup.php">
-
-Username: <INPUT TYPE = 'TEXT' Name ='username'  value="<?PHP print $uname;?>" >
-Password: <INPUT TYPE = 'TEXT' Name ='password'  value="<?PHP print $pword;?>" >
-
-<P>
-<INPUT TYPE = "Submit" Name = "Submit1"  VALUE = "Register">
-
-
-</FORM>
-<P>
-
-<?PHP print $errorMessage;?>
-
-	</body>
-	</html>
