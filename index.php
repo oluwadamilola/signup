@@ -19,43 +19,40 @@
 
 	<div class="wrapper" style="background-image: url('images/5.jpg');">
 		<div class="inner">
-			<form action="" id="form">
+			<form action="formcontrol.php" id="form" method="POST">
 				<h3>Sign Up</h3>
 				<div class="form-group">
 					<div class="form-wrapper">
 						<label for="">First Name</label>
-						<input type="text" class="form-control" id="firstname">
-						<small>Error message</small>
+						<input type="text" class="form-control" id="firstname" name="firstname" required>
 					</div> 
 					<div class="form-wrapper">
 						<label for="">Last Name</label>
-						<input type="text" class="form-control" id="lastname" >
-						<small>Error message</small>
+						<input type="text" class="form-control" id="lastname" name="lastname" required >	
 					</div>
 				</div>
 				<div class="form-wrapper">
 					<label for="number">Phone Number</label>
-					<input id="phone" name="phone" type="tel" class="form-control" width="100%" placeholder="80123456789" id="phone">
-					<small>Error message</small>
+					<input id="phone" name="phone" type="tel" class="form-control" width="100%" name="phonenumber" placeholder="80123456789" id="phone" required>
+				
 				</div>
 				<div class="form-wrapper">
 					<label for="">Date of Birth</label>
-					<input type="date" class="form-control"  id="dob">
-					<small>Error message</small>
+					<input type="date" class="form-control"  id="dob" name="dob" required>	
 				</div>
 				<div class="form-wrapper">
 					<label for="">Gender</label>
-					<select class="form-control" id="gender">
+					<select class="form-control" id="gender"  name="gender"  required>
 						<option value="">select</option>
 						<option>Female</option>
 						<option>Male</option>
 					</select>
-					<small>Error message</small>
+				
 				</div>
-				<button class="button">Continue</button>
+				<button class="button" name="submit">Continue</button>
 			</form>
 			<script src="build/js/intlTelInput.js"></script>
-			<script src="build/js/form.js"></script>
+	
 			<script>
 				
 				// Vanilla Javascript
