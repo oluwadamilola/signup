@@ -46,8 +46,7 @@
 						<option value="" >select</option>
 						<option value="Female" name="gender">Female</option>
 						<option value="Male" name="gender">Male</option>
-					</select>
-					
+					</select>	
 				
 				</div>
 				<button class="button" name="submit">Continue</button>

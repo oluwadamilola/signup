@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     include 'dbconfig.php';
     $firstname = $_POST['firstname'];
@@ -8,8 +8,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $gender = $_POST['gender'];
     $dateofbirth = $_POST['dateofbirth'];
     $errors = "";
-    // $phonenumber = $_POST['phonenumber'];
-    // $date = $_POST['date'];
+    
+$mobilenumber =$_POST['phonenumber'];
+$_SESSION['phonenumber'] = $mobilenumber;
+       # code...
+    
+  
 
     $user_check_query = "SELECT * FROM user WHERE  phonenumber='$phonenumber' LIMIT 1";
     $result = mysqli_query($db_con, $user_check_query);
@@ -18,14 +22,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 $count = mysqli_num_rows($result);
   if ($count ==1) {
       $errors ="user already exist";
-      echo $errors;
+      echo $errors;  
   }
  else {
     $sql = $db_con->prepare("INSERT INTO user ( firstname, lastname, phonenumber, dateofbirth, gender)VALUES(?,?,?,?,?)");
     $sql->bind_param("sssss", $firstname, $lastname, $phonenumber, $dateofbirth, $gender);
     
     if ($sql->execute()) {
-        header("Location: final.php");
+        header("Location: form.php");
             exit;
     }
     else{

@@ -1,29 +1,3 @@
-<?php
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    include 'dbconfig.php';
-    $firstname = $_POST['firstname'];
-	$lastname = $_POST['lastname'];
-    $phonenumber =  mysqli_real_escape_string($db_con, $_POST['phonenumber']);
-    $gender = $_POST['gender'];
-    $dateofbirth = $_POST['dateofbirth'];
-    $errors = "";
-    // $phonenumber = $_POST['phonenumber'];
-    // $date = $_POST['date'];
-
-    $user_check_query = "SELECT * FROM user WHERE  phonenumber='$phonenumber' LIMIT 1";
-    $result = mysqli_query($db_con, $user_check_query);
- $row =mysqli_fetch_array($result, MYSQLI_ASSOC);
-
-$count = mysqli_num_rows($result);
-  if ($count ==1) {
-      $errors ="user already exist";
-      echo $errors;
-  }
-
-?>
-
-
 
 <!DOCTYPE html>
 <html>
@@ -41,7 +15,7 @@ $count = mysqli_num_rows($result);
 	
 	<div class="wrapper" style="background-image: url('images/5.jpg');">
 		<div class="inner">
-			<form action="" method="POST">
+			<form action="process.php" method="POST">
 				<div class="form-wrapper">
 					<label for="">Email</label>
 					<input type="email" class="form-control" name="email">
