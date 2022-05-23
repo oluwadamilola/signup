@@ -33,7 +33,7 @@
 				</div>
 				<div class="form-wrapper">
 					<label for="number">Phone Number</label>
-					<input id="phone"  class="form-control" width="100%" name="phonenumber" placeholder="80123456789" id="phone" required>
+					<input id="phone" type="text"  class="form-control" width="100%" name="phonenumber" placeholder="80123456789" id="phone" required>
 				
 				</div>
 				<div class="form-wrapper">
