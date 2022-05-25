@@ -16,10 +16,7 @@
 	<div class="wrapper" style="background-image: url('images/5.jpg');">
 		<div class="inner">
 			<form action="process.php" method="POST">
-				<div class="form-wrapper">
-					<label for="">Email</label>
-					<input type="email" class="form-control" name="email">
-				</div>
+				
 				<div class="form-wrapper">
 					<label for="">Nationality</label>
 					<input type="text" class="form-control" name="nationality">
