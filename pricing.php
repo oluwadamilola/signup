@@ -1,3 +1,8 @@
+<?php
+session_start();
+$email = $_SESSION['email'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,7 +32,7 @@
             applicable</li>
         </ul>
         <div class="wrapper">
-          <a href="https://paystack.com/pay/hc24x7_monthly" class="button">Subscribe</a>
+        <button type="button" onclick="paystack('<?=$email;?>', 1000);" class="button">Subscribe</button>
         </div>
       </div>
       <div class="col" id="shadow">
@@ -42,7 +47,7 @@
             applicable</li>
         </ul>
         <div class="wrapper">
-          <a href="https://paystack.com/pay/hc24x7-quarterly-subscription" class="button">Subscribe</a>
+        <button type="button" onclick="paystack('<?=$email;?>', 2500);" class="button">Subscribe</button>
         </div>
       </div>
       <div class="col" id="shadow">
@@ -57,7 +62,7 @@
             applicable</li>
         </ul>
         <div class="wrapper">
-          <a href="https://paystack.com/pay/hc24x7-biannual-subscription" class="button">Subscribe</a>
+        <button type="button" onclick="paystack('<?=$email;?>', 4000);" class="button">Subscribe</button>
         </div>
       </div>
       <div class="col" id="shadow">
@@ -75,51 +80,32 @@
             applicable</li>
         </ul>
         <div class="wrapper">
-          <a href="https://paystack.com/pay/hc24x7-annual-subscription" class="button">Subscribe</a>
+          <button type="button" onclick="paystack('<?=$email;?>', 6000);" class="button">Subscribe</button>
         </div>
       </div>
-      <!-- <div class="col" id="annual">
-  <div class="box">
-    <div class="ribbon"><span>POPULAR</span></div>
-    <p class="duration" style="color: white;">Annual</p>
-        <p class="annualprice">₦6,000</p>
-        <ul class="list-group">
-          <li class="listelement" style="color: white;"><i class="bi bi-check-circle-fill"></i> 24-7 unlimited access to
-            doctors</li>
-          <li class="listelement" style="color: white;"> <i class="bi bi-check-circle-fill"></i> 24-7 unlimited access
-            to wellness experts</li>
-          <li class="listelement" style="color: white;"> <i class="bi bi-check-circle-fill"></i> Medication delivery,
-            where available</li>
-          <li class="listelement" style="color: white;"> <i class="bi bi-check-circle-fill"></i> Referrals & appointment
-            booking, if applicable</li>
-        </ul>
-        <div class="wrapper">
-          <button class="button-1" role="button">Subscribe</button>
-        </div>
- </div>
-</div> -->
-
-      <!-- <div class="col" id="annual">
-        <div class="ribbon">Recommended</div>
-        <p class="duration" style="color: white;">Annual</p>
-        <p class="annualprice">₦6,000</p>
-        <ul class="list-group">
-          <li class="listelement" style="color: white;"><i class="bi bi-check-circle-fill"></i> 24-7 unlimited access to
-            doctors</li>
-          <li class="listelement" style="color: white;"> <i class="bi bi-check-circle-fill"></i> 24-7 unlimited access
-            to wellness experts</li>
-          <li class="listelement" style="color: white;"> <i class="bi bi-check-circle-fill"></i> Medication delivery,
-            where available</li>
-          <li class="listelement" style="color: white;"> <i class="bi bi-check-circle-fill"></i> Referrals & appointment
-            booking, if applicable</li>
-        </ul>
-        <div class="wrapper">
-          <button class="button-1" role="button">Subscribe</button>
-        </div>
-      </div> -->
     </div>
   </div>
 
+  <script src="https://js.paystack.co/v1/inline.js"></script>
+
+  <script>
+    function paystack(email, amount) {
+      let handler = PaystackPop.setup({
+        key: "pk_test_f85660fe9954a882f0820480c2339d1d785a92b5", // Replace with your public key
+        email: email,
+        amount: amount * 100,
+        ref: '' + Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you gene
+        onClose: function () {
+          alert('Window closed.');
+        },
+        callback: function (response) {
+          let message = 'Payment complete! Reference: ' + response.reference;
+          alert(message);
+        }
+      });
+    handler.openIframe();
+    }
+  </script>
 </body>
 
 </html>
