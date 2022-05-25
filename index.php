@@ -34,8 +34,12 @@
 				<div class="form-wrapper">
 					<label for="number">Phone Number</label>
 					<input id="phone" type="text"  class="form-control" width="100%" name="phonenumber" placeholder="80123456789" id="phone" required>
-				
 				</div>
+				<div class="form-wrapper">
+					<label for="">Email</label>
+					<input type="email" class="form-control" name="email" required>
+				</div>
+				<div class="form-group">
 				<div class="form-wrapper">
 					<label for="">Date of Birth</label>
 					<input type="date" class="form-control"  id="dob" name="dateofbirth" required>	
@@ -43,14 +47,38 @@
 				<div class="form-wrapper">
 					<label for="">Gender</label>
 					<select class="form-control" id="gender"  name="gender"  required>
-						<option value="" >select</option>
-						<option value="Female" name="gender">Female</option>
-						<option value="Male" name="gender">Male</option>
-					</select>	
-				
+						<option value="" class="form-control" >select</option>
+						<option value="Female"  class="form-control"name="gender">Female</option>
+						<option value="Male" class="form-control" name="gender">Male</option>
+					</select>		
+</div>
 				</div>
 				<button class="button" name="submit">Continue</button>
 			</form>
+
+
+			<!-- <div class="form-wrapper">
+					<label for="">Gender</label>
+					<select class="form-control" id="gender"  name="gender"  required>
+						<option value="" class="form-control" >select</option>
+						<option value="Female"  class="form-control"name="gender">Female</option>
+						<option value="Male" class="form-control" name="gender">Male</option>
+					</select>	
+				</div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 			<script src="build/js/intlTelInput.js"></script>
 	
 			<script>

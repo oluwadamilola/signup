@@ -7,10 +7,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $phonenumber =  mysqli_real_escape_string($db_con, $_POST['phonenumber']);
     $gender = $_POST['gender'];
     $dateofbirth = $_POST['dateofbirth'];
+    $email = $_POST['email'];
     $errors = "";
     
 $mobilenumber =$_POST['phonenumber'];
 $_SESSION['phonenumber'] = $mobilenumber;
+$_SESSION['email'] = $_POST['email'];
        # code...
     
   
@@ -25,8 +27,8 @@ $count = mysqli_num_rows($result);
       echo $errors;  
   }
  else {
-    $sql = $db_con->prepare("INSERT INTO user ( firstname, lastname, phonenumber, dateofbirth, gender)VALUES(?,?,?,?,?)");
-    $sql->bind_param("sssss", $firstname, $lastname, $phonenumber, $dateofbirth, $gender);
+    $sql = $db_con->prepare("INSERT INTO user ( firstname, lastname, phonenumber, dateofbirth, gender,email)VALUES(?,?,?,?,?,?)");
+    $sql->bind_param("ssssss", $firstname, $lastname, $phonenumber, $dateofbirth, $gender,$email);
     
     if ($sql->execute()) {
         header("Location: form.php");
