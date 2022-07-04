@@ -179,8 +179,7 @@
         color: #FFFFFF;
         align-items: center;
         justify-content: center;
-        text-transform: uppercase;
-        font-family: "Muli-SemiBold";
+        font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif !important;
          }
 
           .box {
@@ -231,4 +230,12 @@
           border-bottom: 3px solid transparent;
           border-top: 3px solid #79A70A;
         } 
-         
+      
+button{
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+
+.oppi_header.oppi_header_inner_menu .header_nav .oppi_header_menu > ul > li ul li.nav-item a.nav-link:hover {
+  color: #016CA8;
+}

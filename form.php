@@ -16,11 +16,15 @@
 	<div class="wrapper" style="background-image: url('images/5.jpg');">
 		<div class="inner">
 			<form action="process.php" method="POST">
-				
 				<div class="form-wrapper">
 					<label for="">Nationality</label>
-					<input type="text" class="form-control" name="nationality">
+					<select class="form-control" name="nationality">
+						<option value="Nigeria">select</option>
+						<option value="Nigeria">Nigeria</option>
+						<option value="Others">Others</option>
+					</select>
 				</div>
+
 				<div class="form-wrapper">
 					<label for="">Marital Status</label>
 					<select class="form-control" name="status">

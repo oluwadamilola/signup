@@ -1,0 +1,59 @@
+{
+    "grant_type": "client_credentials",
+    "client_id": 61,
+    "client_secret": "w7d6W2ch0eGijFyVrNkk5HqzBClD1ojAlsKuFsDJ"
+},
+
+
+        {
+            "full_name": "Dami koju",
+            "gender": "0",
+            "dob": "04/11/1980",
+            "nationality": "Nigeria",
+            "country": "Nigeria",
+            "city": "Lagos",
+            "national_identity_no": "11111111111",
+            "uid": "122435586122",
+            "passport_no": "RL3781297",
+            "file_number": "45656456456",
+            "mobile_number": "971526239732",
+            "email": "dami@healthconnect247.com",
+            "insurance_unique_id": "13/XY/30006/0/1/S/4",
+            "member_id": "1448897",
+            "policy_id": "1448897",
+            "co_payment": "20% inpatient and 10% outpatient",
+            "insurance_network": "DIAMOND",
+            "policy_start_date": "01/01/2019",
+            "policy_end_date": "31/12/2019",
+            "policy_termination_date": "",
+            "principal_national_id": "11111111111",
+            "dependency": "Principal"
+        }
+
+        {
+            "full_name": "Dami Olukoju",
+            "gender": "1",
+            "dob": "04/07/1994",
+            "nationality": "Nigeria",
+            "country": "Nigeria",
+            "city": "Lagos",
+            "national_id": "11111111111",
+            "uid": "122435586133",
+            "passport_no": "BL3781298",
+            "file_number": "456564564567",
+            "mobile_number": "7038246997",
+            "email": "dammyolukoju@gmail.com",
+            "insurance_company": "test_eclaim",
+            "service_id": 3,
+            "insurance_unique_id": "13/XY/30006/0/1/S/4",
+            "member_id": "1/E/4",
+            "policy_id": "13/XY/30006/0",
+            "co_payment": "testt",
+            "insurance_network": "DIAMOND",
+            "policy_start_date": "01/12/2019",
+            "policy_end_date": "31/12/2019",
+            "policy_termination_date": "15/12/2019",
+            "principal": "11111111111",
+            "dependency": "principal",
+            "marital_status":"single"
+            }

@@ -11,6 +11,7 @@
 
 	<!-- STYLE CSS -->
 	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="build/css/intlTelInput.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
@@ -21,6 +22,10 @@
 		<div class="inner">
 			<form action="formcontrol.php" id="form" method="POST">
 				<h3>Sign Up</h3>
+				<div class="progress">
+  <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+<span>Step 1 of 2</span>
 				<div class="form-group">
 					<div class="form-wrapper">
 						<label for="">First Name</label>
