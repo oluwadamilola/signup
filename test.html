@@ -101,20 +101,20 @@ Password: <INPUT TYPE = 'TEXT' Name ='password'  value="<?PHP print $pword;?>" >
 
 
 
-    / $curl = curl_init($user_url);
-// curl_setopt($curl, CURLOPT_URL, $user_url);
-// curl_setopt($curl, CURLOPT_POST, true);
-// curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    $curl = curl_init($user_url);
+     curl_setopt($curl, CURLOPT_URL, $user_url);
+ curl_setopt($curl, CURLOPT_POST, true);
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
-// $auth_headers = array(
-//     'Accept' => 'application/json',
-//     'Content-Type' => 'application/json',
-//     'Authorization' => 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImY2ZGExZGY1MjljMDg5MDc5MDFiNGFhZDQ1ZGVlYmI5MzU0ZjNlYTc2ZDQ3OGE4MTUzMDQ5Y2EzNGM4OWNkN2JlNzJkYjA2NTdmOWY4Zjg3In0.eyJhdWQiOiI2NSIsImp0aSI6ImY2ZGExZGY1MjljMDg5MDc5MDFiNGFhZDQ1ZGVlYmI5MzU0ZjNlYTc2ZDQ3OGE4MTUzMDQ5Y2EzNGM4OWNkN2JlNzJkYjA2NTdmOWY4Zjg3IiwiaWF0IjoxNjYxMjUyMDcyLCJuYmYiOjE2NjEyNTIwNzIsImV4cCI6MTY2MjU0ODA3Miwic3ViIjoiIiwic2NvcGVzIjpbXX0.Ajt7YUjFm_4szGrckxm-mV4NNg9z3WObghy3eIU3spZFYm7zh9XS-PuiRauKff3b'
-//     );
-// curl_setopt($curl, CURLOPT_HTTPHEADER, $auth_headers);
-// var_dump($access_token);
+ $auth_headers = array(
+   'Accept' => 'application/json',
+   'Content-Type' => 'application/json',
+   'Authorization' => 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImY2ZGExZGY1MjljMDg5MDc5MDFiNGFhZDQ1ZGVlYmI5MzU0ZjNlYTc2ZDQ3OGE4MTUzMDQ5Y2EzNGM4OWNkN2JlNzJkYjA2NTdmOWY4Zjg3In0.eyJhdWQiOiI2NSIsImp0aSI6ImY2ZGExZGY1MjljMDg5MDc5MDFiNGFhZDQ1ZGVlYmI5MzU0ZjNlYTc2ZDQ3OGE4MTUzMDQ5Y2EzNGM4OWNkN2JlNzJkYjA2NTdmOWY4Zjg3IiwiaWF0IjoxNjYxMjUyMDcyLCJuYmYiOjE2NjEyNTIwNzIsImV4cCI6MTY2MjU0ODA3Miwic3ViIjoiIiwic2NvcGVzIjpbXX0.Ajt7YUjFm_4szGrckxm-mV4NNg9z3WObghy3eIU3spZFYm7zh9XS-PuiRauKff3b'
+   );
+ curl_setopt($curl, CURLOPT_HTTPHEADER, $auth_headers);
+ var_dump($access_token);
 
-// $data = <<<DATA
+ $data = <<<DATA
  {
  "first_name": "Test",
 "last_name": "Dami",
@@ -127,13 +127,46 @@ Password: <INPUT TYPE = 'TEXT' Name ='password'  value="<?PHP print $pword;?>" >
 "mobile": "07038240033",
 "company_code": "EkoTeleMed"
  }
-// DATA;
+DATA;
 
-// curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+ curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
 
-// //for debug only!
-// curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
-// curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+ //for debug only!
+ curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+$response = curl_exec($curl);
+curl_close($curl);
+var_dump($response);
+
+
+
+
+// $url = 'https://aohs1.trudoc24x7.info/api/v1/census/addSinglePatient';
+
+// $data = [
+//   "first_name"=> "Test",
+//   "last_name"=>"Dami",
+//   "gender"=> "female",
+//   "date_of_birth"=>"1992-05-19",
+//   "country_id"=> "1",
+//   "city_id"=> "1",
+//   "national_id"=> "11111111111",
+//   "nationality_id"=>"1",
+//   "mobile"=>"07038240033",
+//   "company_code"=>"EkoTeleMed"
+
+// ];
+
+// $curl = curl_init($url);
+// curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+// curl_setopt($curl, CURLOPT_POST, true);
+// curl_setopt($curl, CURLOPT_POSTFIELDS,  json_encode($data));
+// curl_setopt($curl, CURLOPT_HTTPHEADER, [
+//   'X-RapidAPI-Host: kvstore.p.rapidapi.com',
+//   'Authorization: Bearer Token',
+//   'access-token: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjhlOGU3Y2U3NzBjYzkyYWJiYTc5NmQ0Yzk5ZDg2YjlkZjA2OGI3MWMxMmU1OWIzMWRhMjdkODQ4NWI0M2IwOTAzOTZlMGNiZTE5YTkwNDgwIn0.eyJhdWQiOiI2NSIsImp0aSI6IjhlOGU3Y2U3NzBjYzkyYWJiYTc5NmQ0Yzk5ZDg2YjlkZjA2OGI3MWMxMmU1OWIzMWRhMjdkODQ4NWI0M2IwOTAzOTZlMGNiZTE5YTkwNDgwIiwiaWF0IjoxNjYwNTY5MDk2LCJuYmYiOjE2NjA1NjkwOTYsImV4cCI6MTY2MTg2NTA5Niwic3ViIjoiIiwic2NvcGVzIjpbXX0.o4PMlzQ_oWFUmwSO5SI683jzqAXYLnZQY8oDLt6SD9XSXnL8eR4K2Q51Vsas5kWWo91IsbAhvQU6_vy0FTZrhcHojBrwXI6ib4MftlygJg1ad-gMWzfxn52jB6sQtsGss6efdZLLnFkzEaR3SfGSwx-r-67PTf6M5pdS-IaGG0-cFRnRbZZgpoBlz3W_LJW7sStUbvjed0aUWw-hHePs3GGHHRNdyNpCTfogZMRKJ0x8TbBaCQILL_t580B63-NuDWMAFPDqXPMyT2Q44FvH5PUszvOj8kYjxGgZUjp5PlrC9f6IFfRWyoosuo0PtOzsmbN0MQqw0vrV_XTy9qai3I9WeeyZZu_wLKxs9eQLargIIGnoq0T6LpN7zvh1q8md6PKXYGYmT08ZRrEvqGB-VMZY9SjDpTdF_IbdHrgbxzE2E7mtgTTmatdfGp0iMukr0DLQUqIN3n1zNU3uaP3d4ixQIzrVjusWIcg9rjo8QOKQF2UuvNgfzwDzNLsqWuTOyA4S9JMotctBTEZt9gbe1oYGjGeQYvO44sitbtutl8OIFsNFQu0vJkiokdLIVxzS-9sWCSMTw3ngvP11JyLx_YU5TJeS4A5Qn6O1w5Sx4zilTgpzppi-tIj1EIS5gj3Su5M9dBbe53YWllH3i_8ZvdB15ZZosHhoD-Aroc3OjJw',
+//   'Content-Type: application/json'
+// ]);
 // $response = curl_exec($curl);
 // curl_close($curl);
 // var_dump($response);
