@@ -17,9 +17,9 @@ $_SESSION['email'] = $_POST['email'];
     
   
 
-    $user_check_query = "SELECT * FROM user WHERE  phonenumber='$phonenumber' LIMIT 1";
-    $result = mysqli_query($db_con, $user_check_query);
- $row =mysqli_fetch_array($result, MYSQLI_ASSOC);
+$user_check_query = "SELECT * FROM user WHERE  phonenumber='$phonenumber' LIMIT 1";
+$result = mysqli_query($db_con, $user_check_query);
+$row =mysqli_fetch_array($result, MYSQLI_ASSOC);
 
 $count = mysqli_num_rows($result);
   if ($count ==1) {
@@ -31,6 +31,7 @@ $count = mysqli_num_rows($result);
     $sql->bind_param("ssssss", $firstname, $lastname, $phonenumber, $dateofbirth, $gender,$email);
     
     if ($sql->execute()) {
+        
         header("Location: form.php");
             exit;
     }
