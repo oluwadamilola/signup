@@ -1,17 +1,5 @@
 <?php
 include 'dbconfig.php';
-
-$token_check_query = "SELECT token
-FROM token
-WHERE date between DATE_SUB( CURDATE() , INTERVAL 15 DAY )
-AND CURDATE()";
-$result = mysqli_query($db_con, $token_check_query);
-$token = mysqli_fetch_assoc($result);
-$new_token = mysqli_fetch_object($result);
-
-var_dump($token['token']);
-
-function generateToken()  {
     $url = "https://aohs1.trudoc24x7.info/api/oauth/token";
     $curl = curl_init($url);
   curl_setopt($curl, CURLOPT_URL, $url);
@@ -51,15 +39,8 @@ function generateToken()  {
 
   $update_token_query  = $db_con->prepare("UPDATE token SET token=?, date=? WHERE id=1");
   $update_token_query->bind_param('ss', $access_token, $date);
-  $update_token_query->execute(); 
-  }
-   
-if (($token['token']) === null){
-  generateToken();
-}
-else{
-    echo "helllooooo";
-}
+  $update_token_query->execute();
+  
 
 
 ?>
