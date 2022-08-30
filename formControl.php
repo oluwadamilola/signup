@@ -4,7 +4,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     include 'dbconfig.php';
     $firstname = $_POST['firstname'];
 	$lastname = $_POST['lastname'];
-    $phonenumber =  mysqli_real_escape_string($db_con, $_POST['phonenumber']);
+    $phonenumber = $_POST['phonenumber'];
     $gender = $_POST['gender'];
     $dateofbirth = $_POST['dateofbirth'];
     $email = $_POST['email'];
@@ -13,6 +13,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 $mobilenumber =$_POST['phonenumber'];
 $_SESSION['phonenumber'] = $mobilenumber;
 $_SESSION['email'] = $_POST['email'];
+$countryid = 1;
+$cityid = 1;
+$nationalid = 11111111111;
+$companycode = "EkoTeleMed";
+$nationalityid = 1;
        # code...
     
 $user_check_query = "SELECT * FROM user WHERE  phonenumber='$phonenumber' LIMIT 1";
@@ -108,21 +113,21 @@ $count = mysqli_num_rows($result);
            'Authorization: Bearer ' . $token['token'],
         );
         curl_setopt($curl, CURLOPT_HTTPHEADER, $auth_headers );
+        $data = [
+            "first_name" => $firstname,
+            "last_name" => $lastname,
+            "gender" => $gender,
+            "date_of_birth" =>$dateofbirth,
+            "country_id" =>$countryid,
+            "city_id" =>$cityid,
+            "national_id" => $nationalid,
+            "nationality_id" =>$nationalityid,
+            "mobile" => $phonenumber,
+            "company_code"=>  $companycode
+        ];
+        $user_data = json_encode($data);
+        var_dump($user_data);
         
-        $user_data = <<<DATA
-        {
-          "first_name": $firstname,
-          "last_name": $lastname ,
-          "gender": $gender,
-          "date_of_birth":  $dateofbirth,
-          "country_id": "1",
-          "city_id": "1",
-          "national_id": "11111111111",
-          "nationality_id": "1",
-          "mobile":  $phonenumber,
-          "company_code": "EkoTeleMed"
-          }
-        DATA;
         
         curl_setopt($curl, CURLOPT_POSTFIELDS, $user_data);
         
@@ -136,10 +141,10 @@ $count = mysqli_num_rows($result);
         header("Location: form.php");
             exit;
     }
-    else{
-        echo "Error, check values " . $sql->error;
+    // else{
+    //     echo "Error, check values " . $sql->error;
 
-    }
+    // }
     
     $db_con->close();
  }
